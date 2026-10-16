@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginSignup.css";
+import API_BASE from "../../api";
 
 const AuthPage = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
@@ -23,8 +24,7 @@ const AuthPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
+      fetch(`${API_BASE}/api/auth/register`, {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signupData),
       });
